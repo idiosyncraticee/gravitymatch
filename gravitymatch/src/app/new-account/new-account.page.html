@@ -12,56 +12,98 @@
   <ion-card>
     <ion-card-header>Username</ion-card-header>
     <ion-card-content>
-      <ion-input required type="text" size="30"></ion-input>
+      <ion-input required type="text" maxlength="30" placeholder="username123"></ion-input>
     </ion-card-content> 
   </ion-card>
 
   <ion-card>
       <ion-card-header>Password</ion-card-header>
       <ion-card-content>
-        <ion-input required type="password" size="30" placeholder="•••••••••••"></ion-input>
+        <ion-input required type="password" maxlength="30" placeholder="•••••••••••"></ion-input>
       </ion-card-content> 
   </ion-card>
 
   <ion-card>
       <ion-card-header>Name</ion-card-header>
       <ion-card-content>
-        <ion-input required type="text" size="30" placeholder="Jane Doe"></ion-input>
+        <ion-input required type="text" maxlength="30" placeholder="Jane Doe"></ion-input>
       </ion-card-content> 
   </ion-card>
 
   <ion-card>
       <ion-card-header>Age</ion-card-header>
       <ion-card-content>
-        <ion-input required type="number" min=0 max=120 step=1></ion-input>
+        <ion-input required type="number" min=0 max=120 step=1 placeholder="28"></ion-input>
       </ion-card-content> 
   </ion-card>
 
   <ion-card>
-      <ion-card-header>Gender</ion-card-header>
-      <ion-card-content>
-        <ion-input required type="text" size="30"></ion-input>
-      </ion-card-content> 
+    <ion-card-header>Gender</ion-card-header>
+    <ion-card-content>
+      <ion-radio-group>
+        <ion-item>
+          <ion-label>Male</ion-label>
+          <ion-radio value="Male"></ion-radio>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Female</ion-label>
+          <ion-radio value="Female"></ion-radio>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Gender Nonbinary</ion-label>
+          <ion-radio value="Nonbinary"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>Sexual Orientation</ion-card-header>
+    <ion-card-content>
+      <ion-radio-group>
+        <ion-item>
+          <ion-label>Heterosexual</ion-label>
+          <ion-radio value="Heterosexual"></ion-radio>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Homosexual</ion-label>
+          <ion-radio value="Homosexual"></ion-radio>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Bisexual</ion-label>
+          <ion-radio value="Bisexual"></ion-radio>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Pansexual</ion-label>
+          <ion-radio value="Pansexual"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-card-content>
   </ion-card>
 
   <ion-card>
       <ion-card-header>Must-Have</ion-card-header>
       <ion-card-content>
-        <ion-textarea required type="text" size="100" placeholder="What do you look for most in a partner?"></ion-textarea>
+        <ion-textarea class="short_par" required type="text" maxlength="100" placeholder="What do you look for most in a partner?"></ion-textarea>
       </ion-card-content> 
   </ion-card>
 
   <ion-card>
       <ion-card-header>Deal-Breaker</ion-card-header>
       <ion-card-content>
-        <ion-textarea required type="text" size="100" placeholder="What can you absolutely not have in a partner?"></ion-textarea>
+        <ion-textarea class="short_par" required type="text" maxlength="100" placeholder="What can you absolutely not have in a partner?"></ion-textarea>
       </ion-card-content> 
   </ion-card>
 
   <ion-card>
       <ion-card-header>Bio</ion-card-header>
       <ion-card-content>
-        <ion-textarea class="bio" required type="text" size="1000" placeholder="Tell us about yourself..."></ion-textarea>
+        <ion-textarea class="long_par" required type="text" maxlength="1000" placeholder="Tell us about yourself..."></ion-textarea>
       </ion-card-content> 
   </ion-card>
 
