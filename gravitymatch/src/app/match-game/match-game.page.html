@@ -11,7 +11,7 @@
    <ion-grid>
       <ion-row class="top">
          <ion-slides pager="true">
-            <ion-slide  #slidingItem *ngFor="let rando of randos">
+            <ion-slide  #slidingItem *ngFor="let rando of randos" (ionSwipe)="doSwipe(rando)">
 
                <ion-card>
                   <ion-card-header>
@@ -31,11 +31,12 @@
                            nostrud exercitation ullamco
                            laboris nisi ut aliquip ex ea
                            commodo consequat.</p>
-                           <ion-icon class="filled" size="large" (click)="star(1)" name="star"></ion-icon>
-                           <ion-icon class="filled" size="large" name="star"></ion-icon>
-                           <ion-icon class="filled" size="large" name="star"></ion-icon>
-                           <ion-icon class="filled" size="large" name="star"></ion-icon>
-                           <ion-icon class="filled" size="large" name="star"></ion-icon>
+                           <ion-list no-lines id="menu-list">
+   <button menuClose ion-item *ngFor="let this_star of star_color" (click)="star(this_star, rando, slidingItem)">
+             <ion-icon class="filled" size="large" name="star" [color]="this_star.show ? 'primary' : 'dark'"></ion-icon>
+   </button>
+</ion-list>
+
 
                         </ion-card-content>
                      </ion-card>
@@ -47,7 +48,7 @@
 
 
             <ion-row class="bottom">
-               <ion-card>
+               <ion-card (click)="openModal()">
                   <ion-card-header>
                      <ion-card-title>Client Profile</ion-card-title>
                   </ion-card-header>
