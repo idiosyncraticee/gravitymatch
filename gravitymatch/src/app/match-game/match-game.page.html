@@ -7,6 +7,70 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
+   <ion-grid>
+      <ion-row class="top">
+         <ion-slides pager="true">
+            <ion-slide  #slidingItem *ngFor="let rando of randos">
 
-</ion-content>
+               <ion-card>
+                  <ion-card-header>
+                     <ion-card-title>{{rando.name}}</ion-card-title>
+                  </ion-card-header>
+                  <ion-card-content>
+                     <p><img class="circle-pic"
+                        src="https://source.unsplash.com/category/woman/300x300" /></p>
+                        <p>Distance: {{rando.location}}</p>
+
+                        <br>
+                        <p>Lorem ipsum dolor sit amet,
+                           consectetur adipiscing elit,
+                           sed do eiusmod tempor incididunt
+                           ut labore et dolore magna aliqua.
+                           Ut enim ad minim veniam, quis
+                           nostrud exercitation ullamco
+                           laboris nisi ut aliquip ex ea
+                           commodo consequat.</p>
+                           <ion-icon class="filled" size="large" (click)="star(1)" name="star"></ion-icon>
+                           <ion-icon class="filled" size="large" name="star"></ion-icon>
+                           <ion-icon class="filled" size="large" name="star"></ion-icon>
+                           <ion-icon class="filled" size="large" name="star"></ion-icon>
+                           <ion-icon class="filled" size="large" name="star"></ion-icon>
+
+                        </ion-card-content>
+                     </ion-card>
+
+                  </ion-slide>
+
+               </ion-slides>
+            </ion-row>
+
+
+            <ion-row class="bottom">
+               <ion-card>
+                  <ion-card-header>
+                     <ion-card-title>Client Profile</ion-card-title>
+                  </ion-card-header>
+                  <ion-card-content>
+                     <p>location, distance</p>
+                     <br>
+                     <p>Lorem ipsum dolor sit amet,
+                        consectetur adipiscing elit,
+                        sed do eiusmod tempor incididunt
+                        ut labore et dolore magna aliqua.
+                        Ut enim ad minim veniam, quis
+                        nostrud exercitation ullamco
+                        laboris nisi ut aliquip ex ea
+                        commodo consequat. Duis aute
+                        irure dolor in reprehenderit in
+                        voluptate velit esse cillum
+                        dolore eu fugiat nulla pariatur.
+                        Excepteur sint occaecat cupidatat
+                        non proident, sunt in culpa qui
+                        officia deserunt mollit anim id
+                        est laborum.</p>
+                     </ion-card-content>
+                  </ion-card>
+               </ion-row>
+            </ion-grid>
+         </ion-content>

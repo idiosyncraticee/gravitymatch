@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FavoritesPage implements OnInit {
 
+
   constructor() { }
 
   ngOnInit() {
   }
+
+
 
 }

@@ -75,6 +75,11 @@ export class AppComponent {
       url: '/client_profile',
       icon: 'list'
     },
+    {
+      title: 'Onboarding',
+      url: '/onboarding',
+      icon: 'list'
+    },
   ];
 
   constructor(
