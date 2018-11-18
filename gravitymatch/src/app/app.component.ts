@@ -11,6 +11,21 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 export class AppComponent {
   public appPages = [
     {
+      title: 'Chat',
+      url: '/chat',
+      icon: 'list'
+    },
+    {
+      title: 'Chat List',
+      url: '/chat_list',
+      icon: 'list'
+    },
+    {
+      title: 'Favorites',
+      url: '/favorites',
+      icon: 'list'
+    },
+    {
       title: 'Home',
       url: '/home',
       icon: 'home'
@@ -19,7 +34,42 @@ export class AppComponent {
       title: 'List',
       url: '/list',
       icon: 'list'
-    }
+    },
+    {
+      title: 'Login',
+      url: '/login',
+      icon: 'list'
+    },
+    {
+      title: 'Match Game',
+      url: '/match_game',
+      icon: 'list'
+    },
+    {
+      title: 'Matchmaker Profile',
+      url: '/matchmaker_profile',
+      icon: 'list'
+    },
+    {
+      title: 'My Matches',
+      url: '/my_matches',
+      icon: 'list'
+    },
+    {
+      title: 'New Account',
+      url: '/new_account',
+      icon: 'list'
+    },
+    {
+      title: 'Profile',
+      url: '/profile',
+      icon: 'list'
+    },
+    {
+      title: 'Settings',
+      url: '/settings',
+      icon: 'list'
+    },
   ];
 
   constructor(
