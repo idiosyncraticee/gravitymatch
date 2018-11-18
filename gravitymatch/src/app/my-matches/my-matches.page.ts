@@ -39,7 +39,7 @@ export class MyMatchesPage implements OnInit {
       console.log("approve");
       console.log(item);
       console.log(slidingItem);
-      this.router.navigate(['/favorites', { item: item }]);
+      //this.router.navigate(['/favorites', { item: item }]);
 
    }
 
