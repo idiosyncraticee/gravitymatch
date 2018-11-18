@@ -11,36 +11,63 @@
 
 <ion-content padding>
    <ion-grid>
-     <ion-row>
-       <ion-col>
-          <div class="matcher-profile">
+     <ion-row id="top">
+       <ion-col size="12">
            <img class="circle-pic"
-           src="https://source.unsplash.com/category/woman/100x100" />
-           </div>
+           src="https://source.unsplash.com/category/woman/200x200" />
+           <span class="centered">Two of your recent matches paired up! Good Job!</span>
        </ion-col>
      </ion-row>
-     <ion-row>
-       <ion-col>
-         2 of 5
-       </ion-col>
+     <ion-row id="match-score">
+        <ion-col size="8">
+           MatchScore&#8482;
+        </ion-col>
+        <ion-col size="4" class="score">
+           2234
+        </ion-col>
      </ion-row>
-     <ion-row>
-      <ion-col>
-         3 of 5
-      </ion-col>
+     <ion-row id="play-button">
+        <ion-col size="12">
+           <ion-button shape="round" color="primary" fill="outline" size="large" [href]="'/client_profile'">Play MatchGame</ion-button>
+        </ion-col>
      </ion-row>
      <hr>
-     <ion-row>
-      <ion-col>
-         4 of 5
+     <ion-row  id="recent-matches">
+        <ion-col size="8" id="recent-matches-avatars">
+           Recent Matches
+           <span class = "container">
+
+
+                     <img class="circle-pic-small offset-image-1"
+                  src="https://source.unsplash.com/category/woman/100x100" />
+
+                     <img class="circle-pic-small offset-image-2"
+                   src="https://source.unsplash.com/category/woman/100x100" />
+
+                     <img class="circle-pic-small offset-image-3"
+                 src="https://source.unsplash.com/category/woman/100x100" />
+
+                </span>
+
+         </ion-col>
+         <ion-col>
+         <ion-row class="score">
+            54
+         </ion-row>
+         <ion-row>
+            Match Suggestions
+         </ion-row>
       </ion-col>
      </ion-row>
-     <ion-row>
-      <ion-col>
-         <div>
-         <button ion-button round>Review Your Matches</button>
-         <button ion-button round>Chat</button>
-         </div>
+     <ion-row id="review-matches">
+      <ion-col size="8">
+         <ion-button shape="round" color="primary" fill="outline" size="large" [href]="'/my_matches'">Review Your Matches</ion-button>
+      </ion-col>
+      <ion-col size="4">
+      <span class="badge-container">
+         <ion-button shape="round" color="primary" fill="outline" size="large" [href]="'/chat-list'">Chat</ion-button>
+            <ion-badge class="badge">99</ion-badge>
+            </span>
       </ion-col>
      </ion-row>
    </ion-grid>
