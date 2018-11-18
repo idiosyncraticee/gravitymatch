@@ -13,35 +13,24 @@
 <ion-content>
   <ion-grid>
     <ion-row class="top">
-      <ion-col size="1">
-        <button disabled="true" style="background-color: transparent"> 
-          <ion-icon name="arrow-back" class="backbtn"></ion-icon> 
-        </button>
-      </ion-col>
-      <ion-col size="10">
+
+      <ion-col size="12">
         <ion-slides pager="false">
-          <ion-slide  #slidingItem *ngFor="let rando of randos" (ionSwipe)="doSwipe(rando)">
+          <ion-slide  #slidingItem1 >
 
             <ion-card>
               <ion-card-header>
-                <ion-card-title>{{rando.name}}</ion-card-title>
+                <ion-card-title>{{rando1_name}}</ion-card-title>
               </ion-card-header>
               <ion-card-content>
                 <p><img class="circle-pic" src="https://source.unsplash.com/category/woman/300x300" /></p>
-                  <p>Distance: {{rando.location}}</p>
+                  <p>Distance: {{rando1_location}}</p>
 
                   <br>
-                  <p>Lorem ipsum dolor sit amet,
-                      consectetur adipiscing elit,
-                      sed do eiusmod tempor incididunt
-                      ut labore et dolore magna aliqua.
-                      Ut enim ad minim veniam, quis
-                      nostrud exercitation ullamco
-                      laboris nisi ut aliquip ex ea
-                      commodo consequat.</p>
+                  <p>{{rando1_description}}</p>
                   <ion-list no-lines id="menu-list">
-                    <button menuClose ion-item *ngFor="let this_star of star_color" (click)="star(this_star, rando, slidingItem)">
-                      <ion-icon class="filled" size="large" name="star" [color]="this_star.show ? 'primary' : 'dark'"></ion-icon>
+                    <button menuClose ion-item *ngFor="let this_star of star_color1" (click)="star1(this_star, rando1, slidingItem)">
+                      <ion-icon class="filled" size="small" name="star" [color]="this_star.show ? 'primary' : 'dark'"></ion-icon>
                     </button>
                   </ion-list>
 
@@ -49,42 +38,67 @@
             </ion-card>
 
           </ion-slide>
+          <ion-slide  #slidingItem2 >
 
-          
-              
+            <ion-card>
+              <ion-card-header>
+                <ion-card-title>{{rando2_name}}</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                <p><img class="circle-pic" src="https://source.unsplash.com/category/woman/300x300" /></p>
+                  <p>Distance: {{rando2_location}}</p>
+
+                  <br>
+                  <p>{{rando2_description}}</p>
+                  <ion-list no-lines id="menu-list">
+                    <button menuClose ion-item *ngFor="let this_star of star_color2" (click)="star2(this_star, rando2, slidingItem)">
+                      <ion-icon class="filled" size="small" name="star" [color]="this_star.show ? 'primary' : 'dark'"></ion-icon>
+                    </button>
+                  </ion-list>
+
+              </ion-card-content>
+            </ion-card>
+
+          </ion-slide>
+          <ion-slide  #slidingItem3 >
+
+           <ion-card>
+             <ion-card-header>
+               <ion-card-title>{{rando3_name}}</ion-card-title>
+             </ion-card-header>
+             <ion-card-content>
+               <p><img class="circle-pic" src="https://source.unsplash.com/category/woman/300x300" /></p>
+                  <p>Distance: {{rando3_location}}</p>
+
+                  <br>
+                  <p>{{rando3_description}}</p>
+                  <ion-list no-lines id="menu-list">
+                    <button menuClose ion-item *ngFor="let this_star of star_color3" (click)="star3(this_star, rando3, slidingItem3)">
+                     <ion-icon class="filled" size="small" name="star" [color]="this_star.show ? 'primary' : 'dark'"></ion-icon>
+                    </button>
+                  </ion-list>
+
+             </ion-card-content>
+           </ion-card>
+
+          </ion-slide>
+
+
         </ion-slides>
       </ion-col>
-      <ion-col size="1">
-        <button disabled="true" style="background-color: transparent"> 
-          <ion-icon name="arrow-forward" class="fwdbtn"></ion-icon> 
-        </button>
-      </ion-col>
+
     </ion-row>
 
 
     <ion-row class="bottom">
       <ion-card (click)="openModal()">
         <ion-card-header>
-          <ion-card-title>Client Profile</ion-card-title>
+          <ion-card-title>Chip</ion-card-title>
         </ion-card-header>
         <ion-card-content>
-          <p>location, distance</p>
+          <p>Spokane, WA</p>
           <br>
-          <p>Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit,
-            sed do eiusmod tempor incididunt
-            ut labore et dolore magna aliqua.
-            Ut enim ad minim veniam, quis
-            nostrud exercitation ullamco
-            laboris nisi ut aliquip ex ea
-            commodo consequat. Duis aute
-            irure dolor in reprehenderit in
-            voluptate velit esse cillum
-            dolore eu fugiat nulla pariatur.
-            Excepteur sint occaecat cupidatat
-            non proident, sunt in culpa qui
-            officia deserunt mollit anim id
-            est laborum.</p>
+          <p>Masters Degree in Falconry Sciences.</p>
           </ion-card-content>
         </ion-card>
       </ion-row>

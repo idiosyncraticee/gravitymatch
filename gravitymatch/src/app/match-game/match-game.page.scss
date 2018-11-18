@@ -5,6 +5,7 @@ ion-grid {
 
 .top {
    height:65%;
+   width:100%;
    text-align: center;
 }
 
@@ -13,6 +14,7 @@ ion-grid {
 }
 
 .bottom {
+   width:100%;
    height:35%;
 }
 
@@ -25,12 +27,12 @@ ion-grid {
 
 .backbtn {
   align-content: left;
-  margin-top: 200px;
+
 }
 
 .fwdbtn {
   align-content: right;
-  margin-top: 200px;  
+
 }
 
 ion-icon {
