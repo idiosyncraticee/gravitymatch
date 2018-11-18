@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { ClientProfilePage } from '../client-profile/client-profile.page';
 
 @Component({
   selector: 'app-match-game',
@@ -28,3 +30,15 @@ export class MatchGamePage implements OnInit {
      console.log("Star Power!");
  }
 }
+
+export class Modal {
+   constructor(public modalController: ModalController) {}
+ 
+   async presentModal() {
+     const modal = await this.modalController.create({
+       component: ClientProfilePage,
+       componentProps: { value: 123 }
+     });
+     return await modal.present();
+   }
+ }
