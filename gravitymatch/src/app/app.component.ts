@@ -70,6 +70,11 @@ export class AppComponent {
       url: '/settings',
       icon: 'list'
     },
+    {
+      title: 'Client Profile',
+      url: '/client_profile',
+      icon: 'list'
+    },
   ];
 
   constructor(
