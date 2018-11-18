@@ -74,9 +74,16 @@ export class MatchGamePage implements OnInit {
       //slidingItem.close();
    }
 
-   async function delay(ms: number) {
-       return new Promise( resolve => setTimeout(resolve, ms) );
-   }
+   //async function delay(ms: number) {
+   //    return new Promise( resolve => setTimeout(resolve, ms) );
+   //}
 
+   presentModal() {
+   //   const modal = await this.modalController.create({
+   //     component: ClientProfilePage,
+   //     componentProps: { value: 123 }
+   //   });
+   //   return await modal.present();
+   }
 
 }
