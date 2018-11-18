@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController,ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-client-profile',
@@ -9,7 +10,7 @@ export class ClientProfilePage implements OnInit {
 
    private clients:any;
    public client:any;
-  constructor() { }
+  constructor(private nav:NavController,private modalCtrl:ModalController) { }
 
   ngOnInit() {
      this.clients =   [
@@ -32,6 +33,11 @@ export class ClientProfilePage implements OnInit {
      //TODO: MAKE A RANDOM NUMBER
      this.client = this.clients[0];
      console.log(this.client);
+  }
+  
+  closeModal()
+  {
+    this.modalCtrl.dismiss();
   }
 
 }
