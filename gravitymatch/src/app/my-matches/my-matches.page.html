@@ -1,18 +1,49 @@
 
 <ion-header>
-    <ion-toolbar>
+   <ion-toolbar>
       <ion-buttons slot="start">
-        <ion-menu-button ></ion-menu-button>
+         <ion-menu-button ></ion-menu-button>
       </ion-buttons>
       <ion-title>
-        My Matches
+         My Matches
       </ion-title>
       <ion-buttons slot="end">
-        <ion-menu-button>Chat</ion-menu-button>
+         <ion-menu-button>Chat</ion-menu-button>
       </ion-buttons>
-    </ion-toolbar>
-  </ion-header>
+   </ion-toolbar>
+</ion-header>
 
 <ion-content padding>
+   <div class="score">57</div>
+   <br>
+   <div class="description">Matchmakers have suggested possible matches for you.  Here's teh best:</div>
+      <ion-list>
+         <ion-item-sliding #slidingItem *ngFor="let match of matches">
+            <ion-item class="matches">
+               <ion-avatar slot="start">
+                  <img src="https://source.unsplash.com/category/woman/200x200"/>
+               </ion-avatar>
+               <ion-card>
+                  <ion-card-header>
+{{match.name}}
+               </ion-card-header>
+               <ion-card-content>
 
-</ion-content>
+               <ion-label>
+                  <h3>Location: {{match.location}}</h3>
+                  <p>{{match.mm}} matchmakers give this an average {{match.rank}} match.</p>
+               </ion-label>
+               </ion-card-content>
+               </ion-card>
+            </ion-item>
+            <ion-item-options side="start" (ionSwipe)="approve(match, slidingItem)">
+               <ion-item-option >Approve</ion-item-option>
+            </ion-item-options>
+
+            <ion-item-options side="end" (ionSwipe)="decline(match, slidingItem)">
+               <ion-item-option >Decline</ion-item-option>
+            </ion-item-options>
+         </ion-item-sliding>
+      </ion-list>
+
+   </ion-content>
