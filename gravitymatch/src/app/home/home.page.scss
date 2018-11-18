@@ -5,4 +5,15 @@ ion-grid {
   ion-row {
     height: 20%;
   }
+
+  .matcher-profile {
+     text-align: center;
+ }
+   .circle-pic{
+       width:auto;
+       height:100%;
+       -webkit-border-radius: 50%;
+       border-radius: 50%;
+   }
+
 }
