@@ -11,7 +11,15 @@ export class MatchGamePage implements OnInit {
    randos:any;
    star_color:any;
 
-   constructor() { }
+   constructor( private modalCtrl:ModalController,private alertCtrl:AlertController) {}
+   async openModal()
+   {
+     const modal = await this.modalCtrl.create({
+      component: ClientProfilePage
+    });
+ 
+    return await modal.present();
+   }
 
    ngOnInit() {
    }
