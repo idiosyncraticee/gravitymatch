@@ -16,10 +16,19 @@ ion-grid {
    height:35%;
 }
 
-.circle-pic{
+.circle-pic {
+  width:50%;
+  height:auto;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+}
 
-    width:50%;
-    height:auto;
-    -webkit-border-radius: 50%;
-    border-radius: 50%;
+.backbtn {
+  align-content: left;
+  margin-top: 200px;
+}
+
+.fwdbtn {
+  align-content: right;
+  margin-top: 200px;  
 }
