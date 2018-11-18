@@ -23,4 +23,8 @@ export class MatchGamePage implements OnInit {
         { name: "Patrick", location: "22 miles", mm: '12', rank: "4", show: "yes" },
      ];
   }
+
+  star() {
+     console.log("Star Power!");
+ }
 }
