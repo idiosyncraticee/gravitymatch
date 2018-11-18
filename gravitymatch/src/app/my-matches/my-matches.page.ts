@@ -1,49 +1,61 @@
 import { Component, OnInit, NavController } from '@angular/core';
-   import { Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 
 import { ClientProfilePage } from '../../client-profile/client-profile';
 
 @Component({
-  selector: 'app-my-matches',
-  templateUrl: './my-matches.page.html',
-  styleUrls: ['./my-matches.page.scss'],
+   selector: 'app-my-matches',
+   templateUrl: './my-matches.page.html',
+   styleUrls: ['./my-matches.page.scss'],
 })
 export class MyMatchesPage implements OnInit {
 
-  constructor(
-          private router: Router,
-  ) { }
-
-   matches =   [
-      { name: "Ryan", location: "22 miles", mm: '12', rank: "4" },
-      { name: "Robbie", location: "22 miles", mm: '12', rank: "4" },
-      { name: "Kyle", location: "22 miles", mm: '12', rank: "4" },
-      { name: "Chris", location: "22 miles", mm: '12', rank: "4" },
-      { name: "Patricia", location: "22 miles", mm: '12', rank: "4" },
-      { name: "Joe", location: "22 miles", mm: '12', rank: "4" },
-      { name: "Patrick", location: "22 miles", mm: '12', rank: "4" },
-   ];
+   matches: any;
+   constructor(
+      private router: Router,
+   ) { }
 
 
 
 
-  ngOnInit() {
+   ionViewDidEnter() {
+      console.log("ionViewDidEnter");
+      this.matches =   [
+         { name: "Ryan", location: "22 miles", mm: '12', rank: "4", show: "yes" },
+         { name: "Robbie", location: "22 miles", mm: '12', rank: "4", show: "yes" },
+         { name: "Kyle", location: "22 miles", mm: '12', rank: "4", show: "yes" },
+         { name: "Chris", location: "22 miles", mm: '12', rank: "4", show: "yes" },
+         { name: "Patricia", location: "22 miles", mm: '12', rank: "4", show: "yes" },
+         { name: "Joe", location: "22 miles", mm: '12', rank: "4", show: "yes" },
+         { name: "Patrick", location: "22 miles", mm: '12', rank: "4", show: "yes" },
+      ];
+   }
+
+   ngOnInit() {
 
 
-  }
+   }
 
-  approve(itemId) {
+   approve(item, slidingItem) {
+      console.log("approve");
+      console.log(item);
+      console.log(slidingItem);
+      this.router.navigate(['/favorites', { item: item }]);
 
-     this.router.navigate(['/login', { id: itemId }]);
-
- }
- decline(itemId) {
-    console.log(itemId);
-    
-    //this.navCtrl.navigateRoot('/tabs/(account:account/login)');
-}
+   }
 
 
+   decline(item, slidingItem) {
+      console.log("decline");
+      console.log(item);
+      console.log(slidingItem);
+      const index = this.matches.indexOf(item);
+      if (index > -1) {
+         this.matches.splice(index, 1);
+      }
+      console.log("Following splice");
+      slidingItem.close(); 
+   }
 
 }
