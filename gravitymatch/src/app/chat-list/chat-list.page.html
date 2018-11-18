@@ -7,6 +7,21 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
+  <div class="title">Chats</div>
+  <ion-list *ngFor="let thread of threads">
+        <ion-item>
+          <ion-avatar slot="start">
+              <img src="https://source.unsplash.com/category/woman/200x200"/>
+          </ion-avatar>
+          <ion-card>
+              <ion-card-header class="name">{{thread.name}}, {{thread.age}}</ion-card-header>
+            <ion-card-content class="last_text">
+              {{thread.last_text}}
+            </ion-card-content>
+          </ion-card>
+        </ion-item>
+  </ion-list>
 
 </ion-content>
+ 

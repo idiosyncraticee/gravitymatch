@@ -1,0 +1,30 @@
+ion-avatar {
+    margin-left: 15px;
+    text-align: center;
+    position: absolute;
+    width: 20%;
+    height: 50%;
+}
+
+ion-card {
+    left: 10%;
+    width: 70%;
+}
+
+.title {
+    margin-left: 10px;
+    font-size: 36pt;
+}
+
+.name {
+    margin-left: 50px;
+    font-size: 16pt;
+}
+
+.last_text {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding-top: 0px;
+    margin-left: 25px;
+}
