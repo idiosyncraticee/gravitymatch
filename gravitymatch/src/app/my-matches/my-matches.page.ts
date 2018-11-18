@@ -1,8 +1,6 @@
-import { Component, OnInit, NavController } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-
-import { ClientProfilePage } from '../../client-profile/client-profile';
 
 @Component({
    selector: 'app-my-matches',
@@ -55,7 +53,7 @@ export class MyMatchesPage implements OnInit {
          this.matches.splice(index, 1);
       }
       console.log("Following splice");
-      slidingItem.close(); 
+      slidingItem.close();
    }
 
 }
