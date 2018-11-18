@@ -24,7 +24,8 @@ const routes: Routes = [
   { path: 'chat', loadChildren: './chat/chat.module#ChatPageModule' },
   { path: 'match_game', loadChildren: './match-game/match-game.module#MatchGamePageModule' },
   { path: 'matchmaker_profile', loadChildren: './matchmaker-profile/matchmaker-profile.module#MatchmakerProfilePageModule' },
-  { path: 'favorites', loadChildren: './favorites/favorites.module#FavoritesPageModule' }
+  { path: 'favorites', loadChildren: './favorites/favorites.module#FavoritesPageModule' },
+  { path: 'client_profile', loadChildren: './client-profile/client-profile.module#ClientProfilePageModule' }
 ];
 
 @NgModule({
