@@ -21,7 +21,7 @@
          <ion-item-sliding #slidingItem *ngFor="let match of matches">
             <ion-item class="matches">
                <ion-avatar slot="start">
-                  <img src="https://source.unsplash.com/category/woman/200x200"/>
+                  <img src={{match.headshot}}/>
                </ion-avatar>
                <ion-card>
                   <ion-card-header>

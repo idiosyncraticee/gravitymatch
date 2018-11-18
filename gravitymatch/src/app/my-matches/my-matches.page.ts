@@ -20,7 +20,7 @@ export class MyMatchesPage implements OnInit {
    ionViewDidEnter() {
       console.log("ionViewDidEnter");
       this.matches =   [
-         { name: "Ryan", location: "22 miles", mm: '12', rank: "4", show: "yes" },
+         { name: "Ryan", location: "22 miles", mm: '12', rank: "4", show: "yes", headshot: "./assets/ryan.png" },
          { name: "Robbie", location: "22 miles", mm: '12', rank: "4", show: "yes" },
          { name: "Kyle", location: "22 miles", mm: '12', rank: "4", show: "yes" },
          { name: "Chris", location: "22 miles", mm: '12', rank: "4", show: "yes" },

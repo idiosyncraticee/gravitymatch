@@ -26,7 +26,9 @@ const routes: Routes = [
   { path: 'matchmaker_profile', loadChildren: './matchmaker-profile/matchmaker-profile.module#MatchmakerProfilePageModule' },
   { path: 'favorites', loadChildren: './favorites/favorites.module#FavoritesPageModule' },
   { path: 'client_profile', loadChildren: './client-profile/client-profile.module#ClientProfilePageModule' },
-  { path: 'onboarding', loadChildren: './onboarding/onboarding.module#OnboardingPageModule' }
+  { path: 'onboarding', loadChildren: './onboarding/onboarding.module#OnboardingPageModule' },
+  { path: 'login_list', loadChildren: './login-list/login-list.module#LoginListPageModule' },
+  { path: 'prompt_matchmaking', loadChildren: './prompt-matchmaking/prompt-matchmaking.module#PromptMatchmakingPageModule' }
 ];
 
 @NgModule({

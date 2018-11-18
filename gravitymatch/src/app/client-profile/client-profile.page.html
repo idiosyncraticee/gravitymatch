@@ -13,43 +13,29 @@
     <ion-slides pager="true">
         <ion-slide>
             <img class="circle-pic"
-            src="https://source.unsplash.com/category/woman/300x300" />
+            src={{client.headshot1}} />
         </ion-slide>
 
         <ion-slide>
             <img class="circle-pic"
-            src="https://source.unsplash.com/category/car/300x300" />
+            src="{{client.headshot2}}" />
         </ion-slide>
 
         <ion-slide>
             <img class="circle-pic"
-            src="https://source.unsplash.com/category/tree/300x300" />
+            src={{client.headshot3}} />
         </ion-slide>
       </ion-slides>
 
   <ion-card>
     <ion-card-header>
-        <ion-card-title>Client Profile</ion-card-title>
+        <ion-card-title>{{client.name}}</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-        <p>location, distance</p>
+        <p>{{client.location}}</p>
         <ion-button shape="round" color="primary" fill="outline" size="large" [href]="'/match_game'">Match This Client</ion-button>
         <br>
-        <p>Lorem ipsum dolor sit amet,
-          consectetur adipiscing elit,
-          sed do eiusmod tempor incididunt
-          ut labore et dolore magna aliqua.
-          Ut enim ad minim veniam, quis
-          nostrud exercitation ullamco
-          laboris nisi ut aliquip ex ea
-          commodo consequat. Duis aute
-          irure dolor in reprehenderit in
-          voluptate velit esse cillum
-          dolore eu fugiat nulla pariatur.
-          Excepteur sint occaecat cupidatat
-          non proident, sunt in culpa qui
-          officia deserunt mollit anim id
-          est laborum.</p>
+        <p class="description">{{client.description}}</p>
     </ion-card-content>
   </ion-card>
 

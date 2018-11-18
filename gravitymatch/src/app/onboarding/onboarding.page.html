@@ -10,5 +10,15 @@
 </ion-header>
 
 <ion-content>
-   <img src="./assets/Welcome-screen.png"/>
+   <ion-grid>
+      <ion-row class="top">
+      </ion-row>
+      <ion-row class="bottom">
+         <ion-col size="6">
+                     <ion-button shape="round" color="primary" fill="outline" size="large" [href]="'/matchmaker_profile'">Signup</ion-button>
+         </ion-col>
+         <ion-col size="6">
+                     <ion-button shape="round" color="primary" fill="outline" size="large" [href]="'/login_list'">Login</ion-button>
+         </ion-col>
+      </ion-row>
 </ion-content>

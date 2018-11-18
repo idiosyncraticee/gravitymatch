@@ -17,7 +17,7 @@ export class MatchGamePage implements OnInit {
         { name: "Ryan", location: "22 miles", mm: '12', rank: "4", show: "yes" },
         { name: "Robbie", location: "22 miles", mm: '12', rank: "4", show: "yes" },
         { name: "Kyle", location: "22 miles", mm: '12', rank: "4", show: "yes" },
-        { name: "Chris", location: "22 miles", mm: '12', rank: "4", show: "yes" },
+        { name: "Chris", location: "22 miles", mm: '12', rank: "4", show: "yes", description: "Saltwater aquarium enthusiast ... nay, zealot." },
         { name: "Patricia", location: "22 miles", mm: '12', rank: "4", show: "yes" },
         { name: "Joe", location: "22 miles", mm: '12', rank: "4", show: "yes" },
         { name: "Patrick", location: "22 miles", mm: '12', rank: "4", show: "yes" },

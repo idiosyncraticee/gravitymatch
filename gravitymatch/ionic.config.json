@@ -1,5 +1,7 @@
 {
   "name": "gravitymatch",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "angular"
 }
