@@ -5,6 +5,7 @@ ion-grid {
 
 .top {
    height:65%;
+   width:100%;
    text-align: center;
 }
 
@@ -13,13 +14,27 @@ ion-grid {
 }
 
 .bottom {
+   width:100%;
    height:35%;
 }
 
-.circle-pic{
+.circle-pic {
+  width:50%;
+  height:auto;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+}
 
-    width:50%;
-    height:auto;
-    -webkit-border-radius: 50%;
-    border-radius: 50%;
+.backbtn {
+  align-content: left;
+
+}
+
+.fwdbtn {
+  align-content: right;
+
+}
+
+ion-icon {
+   padding: 0px;
 }

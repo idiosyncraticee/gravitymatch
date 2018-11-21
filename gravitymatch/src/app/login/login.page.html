@@ -5,5 +5,38 @@
 </ion-header>
 
 <ion-content padding>
+  <ion-grid>
 
+    <ion-row id="top">
+      <ion-col class="logo_row" size="6">
+        <ion-avatar>
+          <img src="https://source.unsplash.com/category/woman/200x200"/>
+        </ion-avatar>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-card>
+          <ion-card-header color="primary">Username</ion-card-header>
+          <ion-card-content>
+            <ion-input color="tertiary" required type="text" maxlength="30" placeholder="username123"></ion-input>
+          </ion-card-content>
+        </ion-card>
+        <ion-card>
+          <ion-card-header color="primary">Password</ion-card-header>
+          <ion-card-content>
+            <ion-input  color="tertiary"  required type="password" maxlength="30" placeholder="•••••••••••"></ion-input>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col class="logo_row" size="12">
+        <ion-button class="btn" shape="round" color="primary" fill="outline" size="large" [href]="'/home'">Login</ion-button>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
 </ion-content>

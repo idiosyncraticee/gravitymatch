@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { ToastController } from '@ionic/angular';
 
 @Component({
    selector: 'app-my-matches',
@@ -12,6 +12,7 @@ export class MyMatchesPage implements OnInit {
    matches: any;
    constructor(
       private router: Router,
+      public toastController: ToastController
    ) { }
 
 
@@ -30,18 +31,26 @@ export class MyMatchesPage implements OnInit {
       ];
    }
 
-   ngOnInit() {
-
-
-   }
+   ngOnInit() {}
+   
 
    approve(item, slidingItem) {
       console.log("approve");
       console.log(item);
       console.log(slidingItem);
-      this.router.navigate(['/favorites', { item: item }]);
-
+      this.presentToastWithOptions()
+      //this.router.navigate(['/favorites', { item: item }]);
    }
+
+   async presentToastWithOptions() {
+      const toast = await this.toastController.create({
+        message: 'We will let them know you want to talk!',
+        showCloseButton: false,
+        position: 'middle',
+        duration: 2000
+      });
+      toast.present();
+    }
 
 
    decline(item, slidingItem) {
