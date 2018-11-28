@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
+import { User, MyfirestoreService } from '../services/myfirestore.service';
 
 @Component({
    selector: 'app-my-matches',
@@ -9,10 +10,12 @@ import { ToastController } from '@ionic/angular';
 })
 export class MyMatchesPage implements OnInit {
 
-   matches: any;
+   //matches: any;
+   matches: User[];
    constructor(
-      private router: Router,
-      public toastController: ToastController
+      //private router: Router,
+      public toastController: ToastController,
+      private myfirestoreService: MyfirestoreService,
    ) { }
 
 
@@ -20,19 +23,24 @@ export class MyMatchesPage implements OnInit {
 
    ionViewDidEnter() {
       console.log("ionViewDidEnter");
-      this.matches =   [
-         { name: "Ryan", location: "22 miles", mm: '12', rank: "4", show: "yes", headshot: "./assets/ryan.png" },
-         { name: "Robbie", location: "22 miles", mm: '12', rank: "4", show: "yes" },
-         { name: "Kyle", location: "22 miles", mm: '12', rank: "4", show: "yes" },
-         { name: "Chris", location: "22 miles", mm: '12', rank: "4", show: "yes" },
-         { name: "Patricia", location: "22 miles", mm: '12', rank: "4", show: "yes" },
-         { name: "Joe", location: "22 miles", mm: '12', rank: "4", show: "yes" },
-         { name: "Patrick", location: "22 miles", mm: '12', rank: "4", show: "yes" },
-      ];
+      // this.matches =   [
+      //    { name: "Ryan", location: "22 miles", mm: '12', rank: "4", show: "yes", headshot: "./assets/ryan.png" },
+      //    { name: "Robbie", location: "22 miles", mm: '12', rank: "4", show: "yes" },
+      //    { name: "Kyle", location: "22 miles", mm: '12', rank: "4", show: "yes" },
+      //    { name: "Chris", location: "22 miles", mm: '12', rank: "4", show: "yes" },
+      //    { name: "Patricia", location: "22 miles", mm: '12', rank: "4", show: "yes" },
+      //    { name: "Joe", location: "22 miles", mm: '12', rank: "4", show: "yes" },
+      //    { name: "Patrick", location: "22 miles", mm: '12', rank: "4", show: "yes" },
+      // ];
+      this.myfirestoreService.getUsers().subscribe(res => {
+        this.matches = res;
+      });
    }
 
-   ngOnInit() {}
-   
+   ngOnInit() {
+
+   }
+
 
    approve(item, slidingItem) {
       console.log("approve");

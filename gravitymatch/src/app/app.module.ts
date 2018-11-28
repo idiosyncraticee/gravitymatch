@@ -10,6 +10,10 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import {ClientProfilePageModule} from './client-profile/client-profile.module'
 
+import { AngularFireModule } from '@angular/fire';
+import { environment } from '../environments/environment';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -17,7 +21,9 @@ import {ClientProfilePageModule} from './client-profile/client-profile.module'
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    ClientProfilePageModule
+    ClientProfilePageModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
   ],
   providers: [
     StatusBar,
