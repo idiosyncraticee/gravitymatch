@@ -4,7 +4,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-export interface User {
+export class User {
    id?: string;
    age: number;
    gender: string;
@@ -62,51 +62,38 @@ export class MyfirestoreService {
       return this.afs.collection('matches').doc<User>(document).valueChanges();
    }
 
-   getMatchmakerResult() {
-      console.log("getMatchmakerResult");
+   getMatchmakerResult(client_id) {
 
-      console.log(this.afAuth.auth.currentUser)
+      return this.afs.collection('matchmakers', ref => {
 
-      return this.afs.collection('matchmakers').doc(this.afAuth.auth.currentUser.uid).ref;
+         // Compose a query using multiple .where() methods
+         return ref
+         .where("mm", "==", this.afAuth.auth.currentUser.uid)
+         .where('cid', '==', client_id)
 
+      }).snapshotChanges();
 
+   }
 
-      // return this.afAuth.authState.subscribe(auth => {
-      //    this.afs.collection('matchmakers').doc(auth.uid).snapshotChanges().subscribe((data) => {
-      //       console.log(data);
-      //       return(data);
-      //    });
-      // });
-      //
-      // return this.afs.collection('matchmakers').doc(auth.uid, ref => {
-      //    // Compose a query using multiple .where() methods
-      //    return ref
-      //    .where('random', '>', this.randomInt())
-      //    .orderBy('random')
-      //    .limit(1)
-      //
-      // }).snapshotChanges();
+   getMatchResult(client_id, rando_id) {
+
+      return this.afs.collection('matches', ref => {
+
+         return ref
+         .where("rid", "==", rando_id)
+         .where('cid', '==', client_id)
+
+      }).snapshotChanges();
+
    }
 
    setMatch(client_id, rando_id, score) {
 
       console.log("TODO: sort the matches so they aren't saved twice");
-      var match = {'client': client_id+'_'+rando_id , 'score': score};
-      //var match = {'cid': client_id, 'rid':rando_id, 'score': score};
+      var match = {'mm': this.afAuth.auth.currentUser.uid, 'cid': client_id, 'rid': rando_id, 'score': score};
 
-      this.afAuth.authState.subscribe(auth => {
+      return this.afs.collection('matchmakers').add(match)
 
-         this.afs.collection('matchmakers').doc(auth.uid)
-         .update(match)
-         .then(() => {
-            // update successful (document exists)
-         })
-         .catch((error) => {
-            //console.log('Error updating user', error); // (document does not exists)
-            this.afs.collection('matchmakers').doc(auth.uid)
-            .set(match);
-         });
-      });
    }
 
    getClients() {
@@ -116,22 +103,6 @@ export class MyfirestoreService {
 
    getUser(id) {
       return this.usersCollection.doc<User>(id).valueChanges();
-   }
-
-   getDocument(path: string) {
-
-      this.afAuth.authState.subscribe(auth => {
-         this.afs.doc(path + auth.uid).valueChanges()
-         .subscribe((data) => {
-            console.log(data);
-            return(data);
-         });
-      });
-
-   }
-
-   getUserData():any {
-      return this.afAuth.user.toPromise
    }
 
    updateUser(user: User, id: string) {
@@ -157,7 +128,8 @@ export class MyfirestoreService {
 
    randomInt() {
       // generate random value between 1 and maxInt inclusive of both values
-      return Math.floor(Math.random() * this.max_int) + 1;
+      //return Math.floor(Math.random() * this.max_int) + 1;
+      return 69;
    }
 
 }

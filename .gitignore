@@ -4,3 +4,5 @@
 gravitymatch/src/environments/environment.ts
 
 gravitymatch/src/environments/environment.prod.ts
+
+.DS_Store

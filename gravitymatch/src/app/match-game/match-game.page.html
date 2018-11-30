@@ -15,7 +15,7 @@
       <ion-row class="top">
          <ion-col size="12">
             <ion-slides pager="false">
-               <ion-slide  #slidingItem1 *ngFor="let rando of randos">
+               <ion-slide  #slidingItem1 *ngFor="let rando of randos; let rando_index = index">
 
                   <ion-card>
                      <ion-card-header>
@@ -34,10 +34,10 @@
                         <p>Gender: {{rando?.gender}}</p>
                         <br>
                         <p>Goal: {{rando?.goal}}</p>
-                        <p>Goal: {{rando?.goal}}</p>
+                        <p>Match Score: {{rando?.match_score}}</p>
                         <ion-list no-lines id="menu-list">
                            <button menuClose ion-item *ngFor="let this_star of star_color1; let i = index" (click)="star1(i, rando.id, slidingItem)">
-                              <ion-icon class="filled" size="small" name="star" [color]="this_star.show ? 'primary' : 'dark'"></ion-icon>
+                              <ion-icon class="filled" size="small" name="star" [color]="rando?.match_score > i ? 'primary' : 'dark'"></ion-icon>
                            </button>
                         </ion-list>
 
@@ -57,14 +57,14 @@
             <!-- <ion-card (click)="openModal()"> -->
             <ion-card>
                <ion-card-header>
-                  <ion-card-title>{{client[0]?.id}}</ion-card-title>
+                  <ion-card-title>{{client?.id}}</ion-card-title>
                </ion-card-header>
                <ion-card-content>
-                  <p>Age: {{client[0]?.age}}</p>
+                  <p>Age: {{client?.age}}</p>
                   <br>
-                  <p>Gender: {{client[0]?.gender}}</p>
+                  <p>Gender: {{client?.gender}}</p>
                   <br>
-                  <p>Goal: {{client[0]?.goal}}</p>
+                  <p>Goal: {{client?.goal}}</p>
                   <br>
                   <p>Spokane, WA</p>
                   <br>

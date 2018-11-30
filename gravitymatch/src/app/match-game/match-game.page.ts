@@ -6,6 +6,12 @@ import { User, MyfirestoreService } from '../services/myfirestore.service';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
+class UserMatch extends User {
+    // properties
+    match_score?: number;
+
+}
+
 @Component({
    selector: 'app-match-game',
    templateUrl: './match-game.page.html',
@@ -13,10 +19,10 @@ import 'rxjs/add/operator/catch';
 })
 export class MatchGamePage implements OnInit {
 
-   randos: User[];
+   randos: UserMatch[];
    randos_count: number;
-   client: User[];
-   match_score: any[];
+   client: any;
+   match_score: any;
 
    rando1:any;
    rando1_name:any="Patrick";
@@ -62,9 +68,9 @@ export class MatchGamePage implements OnInit {
             return {
                id: e.payload.doc.id,
                ...e.payload.doc.data()
-            } as User;
+            } as UserMatch;
          })
-         console.log("Made it ehehehehe");
+         console.log(this.randos);
       },(error) => {
          console.log("Error in match-game ngOnInit");
       },() => {
@@ -82,29 +88,16 @@ export class MatchGamePage implements OnInit {
       console.log("ionViewDidEnter match-game");
 
       this.myfirestoreService.getRandomUser().subscribe(data => {
-         this.client = data.map(e => {
-            return {
-               id: e.payload.doc.id,
-               ...e.payload.doc.data()
-            } as User;
-         })
+         this.client = this.getClient(data)[0];
+         this.getMatchScore(data);
+
       },(error) => {
 
       },() => {
 
       });
 
-      this.myfirestoreService.getMatchmakerResult()
-            .get().then(function(doc) {
-         if (doc.exists) {
-            this.matches
-              console.log("Document data:", doc.data());
-         } else {
-              console.log("No such document!");
-         }
-      }).catch(function(error) {
-         console.log("Error getting document:", error);
-      });
+
 
      //MAKE A RANDOM NUMBER
 
@@ -234,15 +227,53 @@ export class MatchGamePage implements OnInit {
             this.star_color1[i].show=true;
          }
       }
-
-      this.myfirestoreService.setMatch(this.client[0].id, rando, rating);
+      console.log("this.client")
+      console.log(this.client)
+      this.myfirestoreService.setMatch(this.client.id, rando, rating);
       //this.star_color[rating].color("#FFFF00");
+      this.myfirestoreService.getMatchResult(this.client.id, rando).subscribe(result => {
+         result.map(r => {
+            var match = r.payload.doc.data()
+            console.log("XXX")
+            console.log(match)
+            console.log(match['match']);
+            if(match['match']==0) {
+               alert("You suck.  They didn't hit it off");
+            } else {
+               alert("Ding, ding, din!  They're a match");
+            }
+            console.log(match);
+         })
+      },(error) => {
+         console.log("No data?")
+      });
 
-
-      console.log("Following splice");
-      //slidingItem.close();
    }
 
+   getClient(data) {
+      return data.map(e => {
+         return {
+            id: e.payload.doc.id,
+            ...e.payload.doc.data()
+         } as UserMatch;
+      })
+   }
 
+   getMatchScore(data) {
+      data.map(e => {
+         var client_id = e.payload.doc.id;
+         this.myfirestoreService.getMatchmakerResult(client_id).subscribe(matches => {
+            return matches.map(m => {
+               var match = m.payload.doc.data()
+               //TODO: FIND A NOT DUM WAY TO DO THIS, PROBABLY AN INDEX LOOKUP ARRAY
+               for (var i = 0; i < this.randos.length; i++) {
+                 if(this.randos[i].id==match['rid']) {
+                    this.randos[i].match_score = match['score']+1;
+                 }
+               }
+            })
+         });
+      })
+   }
 
 }
