@@ -9,60 +9,71 @@
 
 <ion-content padding>
 
+<form [formGroup]="newAccountForm">
+
   <ion-card>
-    <ion-card-header color="primary">Username</ion-card-header>
+    <ion-card-header color="primary">Email</ion-card-header>
     <ion-card-content>
-      <ion-input  color="tertiary" required type="text" maxlength="30" placeholder="username123"></ion-input>
-    </ion-card-content> 
+      <ion-input [formControl]="newAccountForm.controls['email']" color="tertiary" required type="email" maxlength="30" placeholder="user@gravitymatch.com" type="email" (ionBlur)="isValid('email')" (ionFocus)="resetValid('email')"></ion-input>
+    </ion-card-content>
   </ion-card>
+
+  <div *ngIf="emailInvalid" class="validator-error">
+    Please enter a valid email.
+  </div>
+
 
   <ion-card>
       <ion-card-header color="primary">Password</ion-card-header>
       <ion-card-content>
-        <ion-input  color="tertiary"  required type="password" maxlength="30" placeholder="•••••••••••"></ion-input>
-      </ion-card-content> 
+        <ion-input [formControl]="newAccountForm.controls['password']" color="tertiary" required type="password" maxlength="30" type="password" (ionBlur)="isValid('password')"
+        (ionFocus)="resetValid('password')"></ion-input>
+      </ion-card-content>
   </ion-card>
 
-  <ion-card>
+  <div *ngIf="passwordInvalid" class="validator-error">
+    Passwords should be at least 8 characters long.
+  </div>
+
+  <!-- <ion-card>
       <ion-card-header color="primary">Confirm Password</ion-card-header>
       <ion-card-content>
         <ion-input  color="tertiary"  required type="password" maxlength="30"></ion-input>
-      </ion-card-content> 
-  </ion-card>
+      </ion-card-content>
+  </ion-card> -->
 
   <ion-card>
       <ion-card-header color="primary">Name</ion-card-header>
       <ion-card-content>
-        <ion-input  color="tertiary"  required type="text" maxlength="30" placeholder="Jane Doe"></ion-input>
-      </ion-card-content> 
+        <ion-input  color="tertiary" type="text" maxlength="30" placeholder="Jane Doe"></ion-input>
+      </ion-card-content>
   </ion-card>
 
   <ion-card>
       <ion-card-header color="primary">Age</ion-card-header>
       <ion-card-content>
-        <ion-input  color="tertiary"  required type="number" min=0 max=120 step=1 placeholder="28"></ion-input>
-      </ion-card-content> 
+        <ion-input [formControl]="newAccountForm.controls['age']" color="tertiary" type="number" min=0 max=120 step=1></ion-input>
+      </ion-card-content>
   </ion-card>
 
   <ion-card>
     <ion-card-header color="primary">Gender</ion-card-header>
     <ion-card-content>
-      <ion-radio-group>
-        <ion-item>
-          <ion-label color="tertiary">Male</ion-label>
-          <ion-radio value="Male"></ion-radio>
-        </ion-item>
+      <ion-list [formControl]="newAccountForm.controls['gender']" radio-group>
+          <ion-item >
+              <ion-label color="tertiary">Female</ion-label>
+              <ion-radio value="Female"></ion-radio>
+          </ion-item>
+          <ion-item >
+             <ion-label color="tertiary">Male</ion-label>
+             <ion-radio value="Male"></ion-radio>
+          </ion-item>
+          <ion-item >
+             <ion-label color="tertiary">Gender Nonbinary</ion-label>
+             <ion-radio value="Nonbinary"></ion-radio>
+          </ion-item>
+      </ion-list>
 
-        <ion-item>
-          <ion-label color="tertiary">Female</ion-label>
-          <ion-radio value="Female"></ion-radio>
-        </ion-item>
-
-        <ion-item>
-          <ion-label color="tertiary">Gender Nonbinary</ion-label>
-          <ion-radio value="Nonbinary"></ion-radio>
-        </ion-item>
-      </ion-radio-group>
     </ion-card-content>
   </ion-card>
 
@@ -96,22 +107,22 @@
   <ion-card>
       <ion-card-header color="primary">Must-Have</ion-card-header>
       <ion-card-content>
-        <ion-textarea color="tertiary" class="short_par" required type="text" maxlength="100" placeholder="What do you look for most in a partner?"></ion-textarea>
-      </ion-card-content> 
+        <ion-textarea color="tertiary" class="short_par" type="text" maxlength="100" placeholder="What do you look for most in a partner?"></ion-textarea>
+      </ion-card-content>
   </ion-card>
 
   <ion-card>
       <ion-card-header color="primary">Deal-Breaker</ion-card-header>
       <ion-card-content>
-        <ion-textarea color="tertiary" class="short_par" required type="text" maxlength="100" placeholder="What can you absolutely not have in a partner?"></ion-textarea>
-      </ion-card-content> 
+        <ion-textarea color="tertiary" class="short_par" type="text" maxlength="100" placeholder="What can you absolutely not have in a partner?"></ion-textarea>
+      </ion-card-content>
   </ion-card>
 
   <ion-card>
       <ion-card-header color="primary">Bio</ion-card-header>
       <ion-card-content>
-        <ion-textarea color="tertiary" class="long_par" required type="text" maxlength="1000" placeholder="Tell us about yourself..."></ion-textarea>
-      </ion-card-content> 
+        <ion-textarea color="tertiary" class="long_par" type="text" maxlength="1000" placeholder="Tell us about yourself..."></ion-textarea>
+      </ion-card-content>
   </ion-card>
 
   <ion-card>
@@ -142,9 +153,10 @@
       </ion-radio-group>
     </ion-card-content>
   </ion-card>
-  
-  <div style="text-align: center">
-    <ion-button class="btn" shape="round" color="primary" fill="outline" size="large" [href]="'/home'">Creat Account</ion-button>
-  </div>
 
+
+  <div style="text-align: center">
+    <ion-button class="btn" shape="round" color="primary" fill="outline" size="large" [href]="'/home'" [disabled]="!newAccountForm.valid" (click)="onSignup()">Create Account</ion-button>
+  </div>
+  </form>
 </ion-content>

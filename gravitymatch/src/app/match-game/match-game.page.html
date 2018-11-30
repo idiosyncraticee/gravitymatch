@@ -1,106 +1,77 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>MatchGame</ion-title>
-    <ion-buttons slot="end">
-     <ion-button style="align-content: right" shape="round" color="primary" fill="outline" size="small" [href]="'/home'">Home</ion-button>
-    </ion-buttons>
-  </ion-toolbar>
+   <ion-toolbar>
+      <ion-buttons slot="start">
+         <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>MatchGame</ion-title>
+      <ion-buttons slot="end">
+         <ion-button style="align-content: right" shape="round" color="primary" fill="outline" size="small" [href]="'/home'">Home</ion-button>
+      </ion-buttons>
+   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-grid>
-    <ion-row class="top">
+   <ion-grid>
+      <ion-row class="top">
+         <ion-col size="12">
+            <ion-slides pager="false">
+               <ion-slide  #slidingItem1 *ngFor="let rando of randos">
 
-      <ion-col size="12">
-        <ion-slides pager="false">
-          <ion-slide  #slidingItem1 >
+                  <ion-card>
+                     <ion-card-header>
+                        <ion-card-title>{{rando?.id}}</ion-card-title>
+                     </ion-card-header>
+                     <ion-card-content>
+                        <ng-container *ngIf="rando.gender == 'Female'">
+                           <img class="circle-pic" src="https://source.unsplash.com/category/woman/300x300" />
+                        </ng-container>
+                        <ng-container *ngIf="rando.gender == 'Male'">
+                           <img class="circle-pic" src="https://source.unsplash.com/category/man/300x300" />
+                        </ng-container>
+                        <p></p>
+                        <p>Age: {{rando?.age}}</p>
+                        <br>
+                        <p>Gender: {{rando?.gender}}</p>
+                        <br>
+                        <p>Goal: {{rando?.goal}}</p>
+                        <p>Goal: {{rando?.goal}}</p>
+                        <ion-list no-lines id="menu-list">
+                           <button menuClose ion-item *ngFor="let this_star of star_color1; let i = index" (click)="star1(i, rando.id, slidingItem)">
+                              <ion-icon class="filled" size="small" name="star" [color]="this_star.show ? 'primary' : 'dark'"></ion-icon>
+                           </button>
+                        </ion-list>
 
-            <ion-card>
-              <ion-card-header>
-                <ion-card-title>{{rando1_name}}</ion-card-title>
-              </ion-card-header>
-              <ion-card-content>
-                <p><img class="circle-pic" src="https://source.unsplash.com/category/woman/300x300" /></p>
-                  <p>Distance: {{rando1_location}}</p>
+                     </ion-card-content>
+                  </ion-card>
 
-                  <br>
-                  <p>{{rando1_description}}</p>
-                  <ion-list no-lines id="menu-list">
-                    <button menuClose ion-item *ngFor="let this_star of star_color1" (click)="star1(this_star, rando1, slidingItem)">
-                      <ion-icon class="filled" size="small" name="star" [color]="this_star.show ? 'primary' : 'dark'"></ion-icon>
-                    </button>
-                  </ion-list>
+               </ion-slide>
 
-              </ion-card-content>
-            </ion-card>
+            </ion-slides>
+         </ion-col>
 
-          </ion-slide>
-          <ion-slide  #slidingItem2 >
-
-            <ion-card>
-              <ion-card-header>
-                <ion-card-title>{{rando2_name}}</ion-card-title>
-              </ion-card-header>
-              <ion-card-content>
-                <p><img class="circle-pic" src="https://source.unsplash.com/category/woman/300x300" /></p>
-                  <p>Distance: {{rando2_location}}</p>
-
-                  <br>
-                  <p>{{rando2_description}}</p>
-                  <ion-list no-lines id="menu-list">
-                    <button menuClose ion-item *ngFor="let this_star of star_color2" (click)="star2(this_star, rando2, slidingItem)">
-                      <ion-icon class="filled" size="small" name="star" [color]="this_star.show ? 'primary' : 'dark'"></ion-icon>
-                    </button>
-                  </ion-list>
-
-              </ion-card-content>
-            </ion-card>
-
-          </ion-slide>
-          <ion-slide  #slidingItem3 >
-
-           <ion-card>
-             <ion-card-header>
-               <ion-card-title>{{rando3_name}}</ion-card-title>
-             </ion-card-header>
-             <ion-card-content>
-               <p><img class="circle-pic" src="https://source.unsplash.com/category/woman/300x300" /></p>
-                  <p>Distance: {{rando3_location}}</p>
-
-                  <br>
-                  <p>{{rando3_description}}</p>
-                  <ion-list no-lines id="menu-list">
-                    <button menuClose ion-item *ngFor="let this_star of star_color3" (click)="star3(this_star, rando3, slidingItem3)">
-                     <ion-icon class="filled" size="small" name="star" [color]="this_star.show ? 'primary' : 'dark'"></ion-icon>
-                    </button>
-                  </ion-list>
-
-             </ion-card-content>
-           </ion-card>
-
-          </ion-slide>
-
-
-        </ion-slides>
-      </ion-col>
-
-    </ion-row>
-
-
-    <ion-row class="bottom">
-      <ion-card (click)="openModal()">
-        <ion-card-header>
-          <ion-card-title>Chip</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-          <p>Spokane, WA</p>
-          <br>
-          <p>Masters Degree in Falconry Sciences.</p>
-          </ion-card-content>
-        </ion-card>
       </ion-row>
-  </ion-grid>
+
+
+      <ion-row class="bottom">
+         <ion-col size="12">
+            <!-- <ion-card (click)="openModal()"> -->
+            <ion-card>
+               <ion-card-header>
+                  <ion-card-title>{{client[0]?.id}}</ion-card-title>
+               </ion-card-header>
+               <ion-card-content>
+                  <p>Age: {{client[0]?.age}}</p>
+                  <br>
+                  <p>Gender: {{client[0]?.gender}}</p>
+                  <br>
+                  <p>Goal: {{client[0]?.goal}}</p>
+                  <br>
+                  <p>Spokane, WA</p>
+                  <br>
+                  <p>Masters Degree in Falconry Sciences.</p>
+               </ion-card-content>
+            </ion-card>
+         </ion-col>
+      </ion-row>
+   </ion-grid>
 </ion-content>

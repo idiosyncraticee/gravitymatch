@@ -32,8 +32,13 @@ export class MyMatchesPage implements OnInit {
       //    { name: "Joe", location: "22 miles", mm: '12', rank: "4", show: "yes" },
       //    { name: "Patrick", location: "22 miles", mm: '12', rank: "4", show: "yes" },
       // ];
-      this.myfirestoreService.getUsers().subscribe(res => {
-        this.matches = res;
+      this.myfirestoreService.getMatches().subscribe(data => {
+         this.matches = data.map(e => {
+            return {
+               id: e.payload.doc.id,
+               ...e.payload.doc.data()
+            } as User;
+         })
       });
    }
 

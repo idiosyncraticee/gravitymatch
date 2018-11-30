@@ -9,33 +9,25 @@
     </ion-toolbar>
   </ion-header>
 
-<ion-content (click)="closeModal()" padding>
+<!-- <ion-content (click)="closeModal()" padding> -->
+<ion-content padding>
     <ion-slides pager="true">
         <ion-slide>
-            <img class="circle-pic"
-            src={{client.headshot1}} />
-        </ion-slide>
 
-        <ion-slide>
-            <img class="circle-pic"
-            src="{{client.headshot2}}" />
-        </ion-slide>
+             <img class="circle-pic" src="https://source.unsplash.com/category/woman/100x100" />
 
-        <ion-slide>
-            <img class="circle-pic"
-            src={{client.headshot3}} />
         </ion-slide>
       </ion-slides>
 
   <ion-card>
     <ion-card-header>
-        <ion-card-title>{{client.name}}</ion-card-title>
+        <ion-card-title>{{client?.id}}</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-        <p>{{client.location}}</p>
-        <ion-button shape="round" color="primary" fill="outline" size="large" [href]="'/match_game'">Match This Client</ion-button>
+        <p>Age: {{client?.age}}</p>
+        <ion-button shape="round" color="primary" fill="outline" size="large" [routerLink]="['/match_game', client?.id]">Match This Client</ion-button>
         <br>
-        <p class="description">{{client.description}}</p>
+        <p class="description">{{client?.goal}}</p>
     </ion-card-content>
   </ion-card>
 

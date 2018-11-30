@@ -32,6 +32,10 @@ export class AppComponent {
     {
       title: 'MatchGame',
       url: '/match_game'
+    },
+    {
+      title: 'Onboarding',
+      url: '/onboarding'
     }
   ];
 
@@ -48,7 +52,7 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-      this.router.navigate(['/onboarding']);
+      this.router.navigate(['/home']);
     });
   }
 }

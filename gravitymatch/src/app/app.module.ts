@@ -13,6 +13,7 @@ import {ClientProfilePageModule} from './client-profile/client-profile.module'
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,6 +25,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
     ClientProfilePageModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
+    AngularFireAuthModule
   ],
   providers: [
     StatusBar,
