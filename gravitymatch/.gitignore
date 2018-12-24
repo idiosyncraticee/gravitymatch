@@ -34,3 +34,6 @@ Thumbs.db
 UserInterfaceState.xcuserstate
 gravitymatch/package-lock.json
 */.gradle/
+*.gradle/
+
+gravitymatchpythonfirestore/datingfirebase-firebase-adminsdk-04jrb-3d501507d2.json

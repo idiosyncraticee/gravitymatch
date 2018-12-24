@@ -3,40 +3,34 @@
       <ion-buttons slot="start">
          <ion-menu-button></ion-menu-button>
       </ion-buttons>
-      <ion-title>MatchGame</ion-title>
+      <ion-title>MatchGame Score: {{matchmaker_data?.score}}</ion-title>
       <ion-buttons slot="end">
-         <ion-button style="align-content: right" shape="round" color="primary" fill="outline" size="small" [href]="'/home'">Home</ion-button>
+         <ion-button style="align-content: right" shape="round" color="primary" fill="outline" size="small" (click) ="goToHome()">Home</ion-button>
       </ion-buttons>
    </ion-toolbar>
 </ion-header>
 
 <ion-content>
    <ion-grid>
-      <ion-row class="top">
-         <ion-col size="12">
+      <ion-row>
+         <ion-col size="12"  class="top">
             <ion-slides pager="false">
                <ion-slide  #slidingItem1 *ngFor="let rando of randos; let rando_index = index">
 
                   <ion-card>
                      <ion-card-header>
-                        <ion-card-title>{{rando?.id}}</ion-card-title>
+                        <ion-card-title color="primary">{{rando?.id}}</ion-card-title>
                      </ion-card-header>
                      <ion-card-content>
-                        <ng-container *ngIf="rando.gender == 'Female'">
-                           <img class="circle-pic" src="https://source.unsplash.com/category/woman/300x300" />
+                        <ng-container>
+                           <img class="circle-pic" src={{rando?.avatar}} />
                         </ng-container>
-                        <ng-container *ngIf="rando.gender == 'Male'">
-                           <img class="circle-pic" src="https://source.unsplash.com/category/man/300x300" />
-                        </ng-container>
-                        <p></p>
-                        <p>Age: {{rando?.age}}</p>
-                        <br>
-                        <p>Gender: {{rando?.gender}}</p>
-                        <br>
-                        <p>Goal: {{rando?.goal}}</p>
-                        <p>Match Score: {{rando?.match_score}}</p>
-                        <ion-list no-lines id="menu-list">
-                           <button menuClose ion-item *ngFor="let this_star of star_color1; let i = index" (click)="star1(i, rando.id, slidingItem)">
+                        <ion-text color="secondary">Age: {{rando?.age}}</ion-text><br/>
+                        <!-- <ion-text color="secondary">Gender: {{rando?.gender}}</ion-text><br/> -->
+                        <ion-text color="secondary">Goal: {{rando?.goal}}</ion-text><br/>
+                        <ion-text color="secondary">Field: {{rando?.field}}</ion-text><br/>
+                        <ion-list no-lines id="star-rating-list">
+                           <button tappable menuClose ion-item *ngFor="let this_star of star_color1; let i = index" (click)="star1(i, rando.id, slidingItem)" class="star-rating">
                               <ion-icon class="filled" size="small" name="star" [color]="rando?.match_score > i ? 'primary' : 'dark'"></ion-icon>
                            </button>
                         </ion-list>
@@ -52,23 +46,21 @@
       </ion-row>
 
 
-      <ion-row class="bottom">
-         <ion-col size="12">
+      <ion-row>
+         <ion-col size="12" class="bottom">
             <!-- <ion-card (click)="openModal()"> -->
             <ion-card>
                <ion-card-header>
-                  <ion-card-title>{{client?.id}}</ion-card-title>
+                  <ion-card-title color="primary">{{client?.id}}</ion-card-title>
                </ion-card-header>
                <ion-card-content>
-                  <p>Age: {{client?.age}}</p>
-                  <br>
-                  <p>Gender: {{client?.gender}}</p>
-                  <br>
-                  <p>Goal: {{client?.goal}}</p>
-                  <br>
-                  <p>Spokane, WA</p>
-                  <br>
-                  <p>Masters Degree in Falconry Sciences.</p>
+                  <ng-container>
+                     <img class="circle-pic" src={{client?.avatar}} />
+                  </ng-container>
+                  <ion-text color="secondary">Age: {{client?.age}}</ion-text><br/>
+                  <!-- <ion-text color="secondary">Gender: {{client?.gender}}</ion-text><br/> -->
+                  <ion-text color="secondary">Goal: {{client?.goal}}</ion-text><br/>
+                  <ion-text color="secondary">Field: {{client?.field}}</ion-text><br/>
                </ion-card-content>
             </ion-card>
          </ion-col>

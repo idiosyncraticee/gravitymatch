@@ -26,15 +26,25 @@ export class AuthenticationService {
 
    }
 
-   isLoggedIn() {
-      this.afAuth.authState.subscribe(data => {
-         if (data && data.uid && data.email) {
-            this.router.navigateByUrl('home');
-         }
-      });
-   }
+   // isLoggedIn() {
+   //    this.afAuth.authState.subscribe(data => {
+   //       if (data && data.uid && data.email) {
+   //          //this.router.navigateByUrl('home');
+   //       }
+   //    });
+   // }
+
+   // getUid() {
+   //    this.afAuth.authState.subscribe(data => {
+   //       if (data && data.uid && data.email) {
+   //          this.router.navigateByUrl('home');
+   //       }
+   //    });
+   // }
 
    async signupUser(data: any) {
+      let mid: string;
+
       await this.startLoading()
       .then(async () => {
          try {
@@ -48,9 +58,13 @@ export class AuthenticationService {
                   gender: data.gender,
                   goal: data.goal,
                   race: data.race,
+                  name: data.name,
                   random: this.randomInt(),
+                  score: data.score,
+                  attempts: data.attempts,
+                  realuser: 1,
                };
-
+               mid = result.user.uid;
                this.myfirestoreService.addUser(user);
 
                console.log(result);
@@ -63,18 +77,20 @@ export class AuthenticationService {
             this.errorAlert(error.message);
          }
       });
-
+      return mid;
    }
 
-   async loginUser(email: string, password: string) {
+   async loginUser(data: any) {
+      let mid: string;
       await this.startLoading()
       .then(async () => {
          try {
-            await this.afAuth.auth.signInWithEmailAndPassword(email, password)
+            await this.afAuth.auth.signInWithEmailAndPassword(data.email, data.password)
             .then((result) => {
                console.log(result);
                this.showLoading.dismiss();
-               this.router.navigateByUrl('home');
+
+               mid = result.user.uid;
             });
          } catch (error) {
             // console.log(error);
@@ -82,7 +98,7 @@ export class AuthenticationService {
             this.errorAlert(error.message);
          }
       });
-
+      return mid;
    }
 
    async forgotPassword(email: string) {
@@ -105,9 +121,25 @@ export class AuthenticationService {
 
    }
 
-   signOutUser() {
-     this.afAuth.auth.signOut();
-     this.router.navigateByUrl('');
+   async signOutUser() {
+
+     let isSuccess: boolean;
+     await this.startLoading().then(async () => {
+      try {
+         await this.afAuth.auth.signOut()
+         .then(() => {
+          isSuccess = true;
+          this.showLoading.dismiss();
+         });
+      } catch (error) {
+         // console.log(error);
+         isSuccess = false;
+         this.showLoading.dismiss();
+         this.errorAlert(error.message);
+      }
+     });
+     return isSuccess;
+
    }
 
    async errorAlert(errMsg: string) {

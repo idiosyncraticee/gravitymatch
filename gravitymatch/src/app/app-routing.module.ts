@@ -28,7 +28,8 @@ const routes: Routes = [
   { path: 'client_profile', loadChildren: './client-profile/client-profile.module#ClientProfilePageModule' },
   { path: 'onboarding', loadChildren: './onboarding/onboarding.module#OnboardingPageModule' },
   { path: 'login_list', loadChildren: './login-list/login-list.module#LoginListPageModule' },
-  { path: 'prompt_matchmaking', loadChildren: './prompt-matchmaking/prompt-matchmaking.module#PromptMatchmakingPageModule' }
+  { path: 'prompt_matchmaking', loadChildren: './prompt-matchmaking/prompt-matchmaking.module#PromptMatchmakingPageModule' },
+  { path: 'leaderboard', loadChildren: './leaderboard/leaderboard.module#LeaderboardPageModule' }
 ];
 
 @NgModule({

@@ -3,21 +3,21 @@
 // `ng build --env=prod` then `environment.prod.ts` will be used instead.
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 export const environment = {
-  production: false,
-  firebase: {
-     apiKey: 'AIzaSyDFTXpJLWMU1y6fdHRGckGZryQB1NZc0t4',
-     authDomain: 'gravitymatch-cc695.firebaseapp.com',
-     databaseURL: 'https://gravitymatch-cc695.firebaseio.com',
-     projectId: 'gravitymatch-cc695',
-     storageBucket: 'gravitymatch-cc695.appspot.com',
-     messagingSenderId: '335807424767'
-  }
+   production: false,
+   firebase: {
+      apiKey: "AIzaSyAljJwd-OWeEmka9Oma4Q8jt51rczKU35k",
+      authDomain: "datingfirebase.firebaseapp.com",
+      databaseURL: "https://datingfirebase.firebaseio.com",
+      projectId: "datingfirebase",
+      storageBucket: "",
+      messagingSenderId: "924122146094"
+   }
 };
 
 /*
- * In development mode, to ignore zone related error stack frames such as
- * `zone.run`, `zoneDelegate.invokeTask` for easier debugging, you can
- * import the following file, but please comment it out in production mode
- * because it will have performance impact when throw error
- */
+* In development mode, to ignore zone related error stack frames such as
+* `zone.run`, `zoneDelegate.invokeTask` for easier debugging, you can
+* import the following file, but please comment it out in production mode
+* because it will have performance impact when throw error
+*/
 // import 'zone.js/dist/zone-error';  // Included with Angular CLI.

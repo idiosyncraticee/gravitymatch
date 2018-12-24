@@ -3,7 +3,8 @@ import { Component } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-
+import { AngularFireAuth } from '@angular/fire/auth';
+import { AuthenticationService } from './services/authentication.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -18,9 +19,9 @@ export class AppComponent {
       //icon: 'home'
     },
     {
-      title: 'Profile',
-      url: '/client_profile',
-    },
+     title: 'Profile',
+     url: '/profile',
+   },
     {
       title: 'Matches',
       url: '/my_matches'
@@ -34,16 +35,26 @@ export class AppComponent {
       url: '/match_game'
     },
     {
-      title: 'Onboarding',
-      url: '/onboarding'
-    }
+      title: 'Leaderboard',
+      url: '/leaderboard'
+    },
+   {
+     title: 'Logout',
+     url: '/profile',
+   },
+   {
+     title: 'Welcome',
+     url: '/onboarding'
+   },
   ];
 
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    private router: Router
+    private router: Router,
+    private afAuth: AngularFireAuth,
+    private authService: AuthenticationService,
   ) {
     this.initializeApp();
   }
@@ -52,7 +63,27 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-      this.router.navigate(['/home']);
+
+
+      this.afAuth.authState.subscribe(user => {
+
+          if (user != null) {
+             this.router.navigate(['/home', { mid: user.uid}]);
+          } else {
+             this.router.navigate(['/onboarding']);
+          }
+
+      });
+
     });
   }
+
+  async signOutUser() {
+     await this.authService.signOutUser().then(() => {
+        console.log("Successful logout");
+        this.router.navigate(['/onboarding']);
+     });
+  }
+
+
 }

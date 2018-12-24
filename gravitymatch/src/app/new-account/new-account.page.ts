@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../services/authentication.service';
-import { FormBuilder, FormGroup, Validators, ValidatorFn } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
    selector: 'app-new-account',
@@ -12,18 +13,24 @@ export class NewAccountPage implements OnInit {
    newAccountForm: FormGroup;
    emailInvalid: boolean;
    passwordInvalid: boolean;
+   nameInvalid: boolean;
 
    constructor(
       private formBuilder: FormBuilder,
       private authService: AuthenticationService,
+      private router: Router,
    ) {
       this.newAccountForm = this.formBuilder.group({
           email: ['', Validators.compose([Validators.email,Validators.required])],
           password: ['', Validators.compose([Validators.pattern('.{8,}'), Validators.required])],
-          gender: [''],
-          age: [''],
+          name: ['', Validators.compose([Validators.pattern('.{4,}'), Validators.required])],
+          gender: ['Unknown'],
+          age: [0],
          goal: [''],
          race: [''],
+         score: [0],
+         attempts: [0],
+         realuser: [1],
       })
    }
 
@@ -31,41 +38,26 @@ export class NewAccountPage implements OnInit {
    }
 
    async onSignup() {
-      await this.authService.signupUser(this.newAccountForm.value).then(() => {
-         console.log("Successful signup");
+      await this.authService.signupUser(this.newAccountForm.value).then((mid) => {
 
+
+         if(typeof mid !== 'undefined') {
+            console.log("Successful signup");
+            //NAVIGATE TO HOME AND PROVIDE THE MATCHMAKER ID
+            this.router.navigate(['/home', { mid: mid}]);
+         } else {
+            console.log("Unsuccessful signup");
+         }
       });
    }
-
-   // signupUser(){
-   //
-   //    if (!this.signupForm.valid){
-   //       console.log(this.signupForm.value);
-   //    } else {
-   //       if (this.agreeChckbox1) {
-   //          this.authData.signupUser(this.signupForm.value.email, this.signupForm.value.password).then(() => {
-   //
-   //
-   //          },
-   //          error => {
-   //             let alert = this.alertCtrl.create({
-   //                message: error.message,
-   //                buttons: [{text: "Ok", role: 'cancel'}]
-   //             });
-   //             alert.present();
-   //          });
-   //       } else {
-   //          this.showToast('Please indicate that you have read and agree to the Privacy Policy and Terms of Service', 3000, 'bottom');
-   //       }
-   //    }
-   //
-   // }
 
    isValid(input: string) {
     if (input === 'email') {
        // check email
        this.emailInvalid = !(this.newAccountForm.controls[input].valid && this.newAccountForm.controls[input].dirty);
-    } else {
+    } else if(input === 'name') {
+      this.nameInvalid = !(this.newAccountForm.controls[input].valid && this.newAccountForm.controls[input].dirty);
+    } else if(input === 'password') {
        // check password
        this.passwordInvalid = !this.newAccountForm.controls[input].valid;
     }
@@ -74,7 +66,9 @@ export class NewAccountPage implements OnInit {
    resetValid(input: string) {
     if (input === 'email') {
        this.emailInvalid = false;
-    } else {
+    } else if(input === 'name') {
+       this.nameInvalid = false;
+    } else if(input === 'password') {
        this.passwordInvalid = false;
     }
    }

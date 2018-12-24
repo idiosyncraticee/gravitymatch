@@ -13,7 +13,7 @@
 
   <ion-card>
     <ion-card-header color="primary">Email</ion-card-header>
-    <ion-card-content>
+    <ion-card-content color="secondary">
       <ion-input [formControl]="newAccountForm.controls['email']" color="tertiary" required type="email" maxlength="30" placeholder="user@gravitymatch.com" type="email" (ionBlur)="isValid('email')" (ionFocus)="resetValid('email')"></ion-input>
     </ion-card-content>
   </ion-card>
@@ -45,9 +45,14 @@
   <ion-card>
       <ion-card-header color="primary">Name</ion-card-header>
       <ion-card-content>
-        <ion-input  color="tertiary" type="text" maxlength="30" placeholder="Jane Doe"></ion-input>
+        <ion-input [formControl]="newAccountForm.controls['name']" color="tertiary" required type="text" maxlength="30" placeholder="Jane Doe" (ionBlur)="isValid('name')"
+        (ionFocus)="resetValid('name')"></ion-input>
       </ion-card-content>
   </ion-card>
+
+  <div *ngIf="nameInvalid" class="validator-error">
+    Please enter a valid name.
+  </div>
 
   <ion-card>
       <ion-card-header color="primary">Age</ion-card-header>
@@ -62,15 +67,15 @@
       <ion-list [formControl]="newAccountForm.controls['gender']" radio-group>
           <ion-item >
               <ion-label color="tertiary">Female</ion-label>
-              <ion-radio value="Female"></ion-radio>
+              <ion-radio [value]="Female"></ion-radio>
           </ion-item>
           <ion-item >
              <ion-label color="tertiary">Male</ion-label>
-             <ion-radio value="Male"></ion-radio>
+             <ion-radio [value]="Male"></ion-radio>
           </ion-item>
           <ion-item >
              <ion-label color="tertiary">Gender Nonbinary</ion-label>
-             <ion-radio value="Nonbinary"></ion-radio>
+             <ion-radio [value]="Nonbinary"></ion-radio>
           </ion-item>
       </ion-list>
 
@@ -156,7 +161,7 @@
 
 
   <div style="text-align: center">
-    <ion-button class="btn" shape="round" color="primary" fill="outline" size="large" [href]="'/home'" [disabled]="!newAccountForm.valid" (click)="onSignup()">Create Account</ion-button>
+    <ion-button class="btn" shape="round" color="primary" fill="outline" size="large" [disabled]="!newAccountForm.valid" (click)="onSignup()">Create Account</ion-button>
   </div>
   </form>
 </ion-content>

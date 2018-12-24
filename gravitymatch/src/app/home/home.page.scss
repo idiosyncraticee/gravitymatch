@@ -1,5 +1,16 @@
 ion-content {
-   /*background: color($colors, home);*/
+
+  --background: url('../../assets/BG.png')  no-repeat fixed center;
+}
+ion-header {
+   background-color: #961aff;
+}
+
+@media (max-width:413px) {
+   ion-content {
+
+     --background: url('../../assets/BG.png')  no-repeat fixed center;
+   }
 }
 
 ion-grid {
@@ -12,7 +23,13 @@ ion-grid {
 ion-button {
    -webkit-border-radius: 50%;
    border-radius: 50%;
+
 }
+
+#review-matches ion-button {
+   font-size: 0.8rem;
+}
+
 hr {
   border-top: 1px solid black;
 }
@@ -23,7 +40,7 @@ hr {
      font-size: 2.0rem;
  }
 
- #match-score {
+ .match-score {
     font-size: 2.0rem;
     height: 15%;
     text-align: center;

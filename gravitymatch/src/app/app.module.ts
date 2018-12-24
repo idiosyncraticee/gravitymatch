@@ -14,9 +14,10 @@ import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AppBarComponent } from './app-bar/app-bar.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, AppBarComponent],
   entryComponents: [],
   imports: [
     BrowserModule,

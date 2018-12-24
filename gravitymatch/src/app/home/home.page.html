@@ -4,38 +4,46 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>
-      Home
+      Home {{matchmaker_data?.name}}
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
    <ion-grid>
-     <ion-row id="top">
+     <!-- <ion-row id="top">
        <ion-col size="12">
            <img class="circle-pic"
            src="https://source.unsplash.com/category/woman/200x200" />
            <span class="centered">Two of your recent matches paired up! Good Job!</span>
        </ion-col>
-     </ion-row>
-     <ion-row id="match-score">
+     </ion-row> -->
+     <ion-row class="match-score">
         <ion-col size="8">
-           MatchScore&#8482;
+           <ion-text color="primary">MatchScore&#8482;</ion-text>
         </ion-col>
         <ion-col size="4" class="score">
-           2234
+           <ion-text color="primary">{{matchmaker_data?.score}}</ion-text>
+        </ion-col>
+     </ion-row>
+     <ion-row class="match-score">
+        <ion-col size="8">
+           <ion-text color="primary">Attempts</ion-text>
+        </ion-col>
+        <ion-col size="4" class="score">
+           <ion-text color="primary">{{matchmaker_data?.attempts}}</ion-text>
         </ion-col>
      </ion-row>
      <ion-row id="play-button">
         <ion-col size="12">
            <!-- <ion-button shape="round" color="primary" fill="outline" size="large" [href]="'/client_profile'">Play MatchGame</ion-button> -->
-           <ion-button shape="round" color="primary" fill="outline" size="large" [href]="'/match_game'">Play MatchGame</ion-button>
+           <ion-button shape="round" color="primary" fill="solid" size="large" (click) ="goToMatchGame()">Play MatchGame</ion-button>
         </ion-col>
      </ion-row>
      <hr>
      <ion-row  id="recent-matches">
         <ion-col size="8" id="recent-matches-avatars">
-           Recent Matches
+           <ion-text color="primary">Recent Matches</ion-text>
            <span class = "container">
 
 
@@ -53,20 +61,20 @@
          </ion-col>
          <ion-col>
          <ion-row class="score">
-            54
+            <ion-text color="primary">54</ion-text>
          </ion-row>
          <ion-row>
-            Match Suggestions
+            <ion-text color="primary">Match Suggestions</ion-text>
          </ion-row>
       </ion-col>
      </ion-row>
      <ion-row id="review-matches">
       <ion-col size="8">
-         <ion-button shape="round" color="primary" fill="outline" size="large" [href]="'/my_matches'">Review Your Matches</ion-button>
+         <ion-button shape="round" color="primary" fill="solid" size="large" (click) ="checkMatchScore()">Review Your Matches</ion-button>
       </ion-col>
       <ion-col size="4">
       <span class="badge-container">
-         <ion-button shape="round" color="primary" fill="outline" size="large" [href]="'/chat_list'">Chat</ion-button>
+         <ion-button shape="round" color="secondary" fill="outline" size="large" (click) ="checkMatchScore()">Messages</ion-button>
             <ion-badge class="badge">99</ion-badge>
             </span>
       </ion-col>
